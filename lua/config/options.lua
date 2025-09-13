@@ -4,6 +4,11 @@
 
 vim.opt.guifont = "0xProto Nerd Font Mono:h14"
 vim.g.autoformat = false
+-- vim.opt.listchars:append({ trail = "·" })
+vim.opt.listchars:append({ trail = "･" })
+vim.g.indent_blankline_enabled = false
+vim.opt.title = true
+vim.opt.titlestring = "neovide - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
 local gui_configs = {
   neovide = function()
@@ -12,7 +17,7 @@ local gui_configs = {
     vim.g.neovide_cursor_animation_length = 0.07
     vim.g.neovide_cursor_trail_length = 0.3
     -- otros: "railgun", "torpedo", "pixiedust", "sonicboom", "ripple", "wireframe"   -- vim.g.neovide_cursor_vfx_mode = {"torpedo", "wireframe"}
-    vim.g.neovide_cursor_vfx_mode = {"torpedo", "wireframe"}
+    -- vim.g.neovide_cursor_vfx_mode = {"torpedo", "wireframe"}
     vim.g.neovide_cursor_vfx_opacity = 100.0
     vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
     vim.g.neovide_cursor_vfx_particle_density = 15.0
@@ -42,3 +47,7 @@ vim.api.nvim_create_autocmd("UIEnter", {
   end,
 })
 
+local project_config = vim.fn.findfile('.nvim.lua', '.;')
+if project_config ~= '' then
+  vim.cmd('source ' .. project_config)
+end

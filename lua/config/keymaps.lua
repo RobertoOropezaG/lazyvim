@@ -71,10 +71,10 @@ local function find_project_root()
   return nil
 end
 
-vim.keymap.set('n', '<leader>tvr', function()
+vim.keymap.set('n', '<leader>tr', function()
   local root = find_project_root()
   if root then
-    vim.cmd('vsplit | terminal')
+    vim.cmd('5split | terminal')
     vim.cmd('startinsert')
     -- cd to project root first
     vim.api.nvim_chan_send(vim.b.terminal_job_id, "cd " .. root .. " && npm start\r")
@@ -83,6 +83,10 @@ vim.keymap.set('n', '<leader>tvr', function()
   end
 end, { noremap = true, silent = true, desc = "React Dev Server (auto project root)" })
 
+vim.keymap.set('n', '<leader>tb', function()
+  vim.cmd('5split | :RunBackend')
+  vim.cmd('startinsert')
+end, { noremap = true, silent = true, desc = "Run Backend"})
 
 -- Show main dashboard
 local function showDashboard()

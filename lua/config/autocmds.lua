@@ -33,3 +33,62 @@ vim.api.nvim_create_autocmd("User", {
     end
   end,
 })
+
+
+-- Use vim.loop (libuv)
+local uv = vim.loop
+
+-- Get current working directory
+local cwd = vim.fn.getcwd()
+
+-- Search for a .sln file in cwd or parent directories
+local function find_solution_old(start_dir)
+  local dir = start_dir or cwd
+
+  while dir do
+    local handle = uv.fs_scandir(dir)
+    if handle then
+      while true do
+        local name, _ = uv.fs_scandir_next(handle)
+        if not name then break end
+        if name:match("%.sln$") then
+          return dir, name -- return folder and solution filename
+        end
+      end
+    end
+    -- Move one level up
+    local parent = dir:match("(.+)/[^/]+$") or dir:match("(.+)\\[^\\]+$") -- handle / or \ paths
+    if not parent or parent == dir then break end
+    dir = parent
+  end
+  return nil, nil
+end
+
+-- local function find_solution(start_dir)
+--   local cwd = start_dir or vim.fn.getcwd()
+--   local sln_path = vim.fn.findfile("*.sln", cwd .. "/;")
+--   if sln_path ~= "" then
+--     local dir = vim.fn.fnamemodify(sln_path, ":h")
+--     local name = vim.fn.fnamemodify(sln_path, ":t")
+--     return dir, name
+--   end
+--   return nil, nil
+-- end
+
+-- Attempt to find solution
+local sln_dir, sln_file = find_solution_old()
+
+if sln_dir and sln_file then
+  local config_file = sln_dir .. "/../local-only/applicationhost.config" -- adjust if needed
+  local site_name = "HC.RestService"
+  local app_pool = "Clr4IntegratedAppPool"
+
+  vim.api.nvim_create_user_command('RunBackend', function()
+    -- Build solution
+    vim.fn.system(string.format('msbuild "%s/%s" /p:Configuration=Debug', sln_dir, sln_file))
+
+    -- Run in a split terminal
+    vim.cmd('term "C:/Program Files (x86)/IIS Express/iisexpress.exe" /config:' .. config_file .. ' /site:' .. site_name .. ' /apppool:' .. app_pool)
+    vim.cmd('startinsert') -- Optional: enter insert mode in the terminal
+  end, {})
+end

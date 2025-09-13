@@ -3,9 +3,9 @@ return {
   "folke/snacks.nvim",
   optional = true, -- harmless if Snacks is disabled
   opts = function(_, opts)
-    if not vim.g.neovide then
-      return
-    end
+    -- if not vim.g.neovide then
+    --   return
+    -- end
     opts.dashboard = opts.dashboard or {}
     opts.dashboard.preset = opts.dashboard.preset or {}
     -- only override the header; keep default keys, pick(), footer, etc.
