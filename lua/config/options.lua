@@ -8,10 +8,10 @@ vim.g.autoformat = false
 vim.opt.listchars:append({ trail = "･" })
 vim.g.indent_blankline_enabled = false
 vim.opt.title = true
-vim.opt.titlestring = "neovide - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-
+vim.opt.titlestring = "nvim - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 local gui_configs = {
   neovide = function()
+    vim.opt.titlestring = "neovide - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
     vim.g.neovide_scale_factor = 0.75
     -- vim.opt.guifont = "0xProto Nerd Font Mono:h11"
     vim.g.neovide_cursor_animation_length = 0.07

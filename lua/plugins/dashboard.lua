@@ -6,10 +6,16 @@ return {
     -- if not vim.g.neovide then
     --   return
     -- end
+
+    -- opts.footer = opts.footer or {}
+    -- table.insert(opts.footer, function()
+    --   return "Path: " .. vim.fn.getcwd()
+    -- end)
+
     opts.dashboard = opts.dashboard or {}
     opts.dashboard.preset = opts.dashboard.preset or {}
     -- only override the header; keep default keys, pick(), footer, etc.
-    opts.dashboard.preset.header =
+    opts.dashboard.preset.header = vim.fn.getcwd() .. "\n\n\n" ..
       -- [[
       -- ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗██████╗
       -- ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║██╔══██╗
@@ -56,5 +62,6 @@ return {
     --  ███████████ █████   █████ ███████████    █████       ░░███      █████ █████     █████
     -- ░░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░░░░░░░    ░░░░░         ░░░      ░░░░░ ░░░░░     ░░░░░
     -- ]]
+    return opts
   end,
 }
