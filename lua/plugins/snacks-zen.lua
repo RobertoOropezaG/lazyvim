@@ -19,7 +19,12 @@ return {
       filters = {
         git_ignored = true,
       },
+      sources = {
+        { name = "buffers" },
+      }
     })
+
+    opts.indent = { enabled = false }
 
     -- pickers respect .gitignore
     opts.picker = vim.tbl_deep_extend("force", opts.picker or {}, {

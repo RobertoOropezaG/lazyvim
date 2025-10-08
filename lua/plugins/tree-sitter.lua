@@ -4,20 +4,21 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
-    --ensure_installed = {
-    -- Backend
-    --"python", "c_sharp", "go", "rust", "json", "toml", "yaml", "sql", "dockerfile",
-    -- Frontend
-    --      "typescript", "tsx", "javascript", "html", "css", "scss",
-    -- Systems / Retro
-    --    "c", "cpp", "asm", "pascal", "lua",
-    -- Blender / Graphics
-    --  "glsl",
-    -- General
-    --"bash", "regex", "markdown", "markdown_inline", "gitcommit", "diff", "ini", "http",
-    --    },
+    ensure_installed = {
+     -- Backend
+    "python", "c_sharp", "go", "rust", "json", "toml", "yaml", "sql", "dockerfile",
+     -- Frontend
+          "typescript", "tsx", "javascript", "html", "css", "scss",
+     -- Systems / Retro
+        "c", "cpp", "asm", "pascal", "lua",
+     -- Blender / Graphics
+      "glsl",
+     -- General
+    "bash", "regex", "markdown", "markdown_inline", "gitcommit", "diff", "ini",
+        },
+     -- ensure_installed = { "json5" },
 
-    compilers = { "zig" },
+    -- R compilers = { "zig" },
     highlight = { enable = true },
     indent = { enable = true },
     -- auto_install = true, -- install a missing parser when you open a file
@@ -38,8 +39,8 @@ return {
   -- end,
 
   config = function(_, opts)
-    -- require("nvim-treesitter.install").compilers = { "zig" }
-    opts.compilers = { "zig" }
+    -- R require("nvim-treesitter.install").compilers = { "zig" }
+    -- R opts.compilers = { "zig" }
     opts.incremental_selection = opts.incremental_selection or {}
     opts.incremental_selection.enable = true
     opts.incremental_selection.keymaps = {
@@ -48,7 +49,21 @@ return {
       node_decremental = "<M-space>",
     }
 
-    require("nvim-treesitter.configs").setup(opts)
+-- Wait 2 seconds before requiring Tree-sitter configs
+    vim.defer_fn(function()
+      local ok, tsconfigs = pcall(require, "nvim-treesitter.configs")
+      if not ok then
+        vim.notify(
+          "[nvim-treesitter] failed to load configs module. Make sure the plugin is installed and parsers are built.",
+          vim.log.levels.ERROR
+        )
+        return
+      end
+
+      tsconfigs.setup(opts)
+    end, 5000)  -- 2000 ms = 2 seconds delay
+
+    -- require("nvim-treesitter.configs").setup(opts)
     -- Force Zig compilers
   end,
 

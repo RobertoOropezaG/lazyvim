@@ -2,7 +2,7 @@ local dap = require("dap")
 local dapui = require("dapui")
 
 -- Setup UI
-dapui.setup()
+-- dapui.setup()
 
 -- Auto open/close dap-ui panels
 dap.listeners.after.event_initialized["dapui_config"] = function()

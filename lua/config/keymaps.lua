@@ -2,6 +2,9 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+local M = {}
+
+
 -- Toggle fullscreen in Neovide
 vim.keymap.set("n", "<F11>", function()
   vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
@@ -88,9 +91,66 @@ vim.keymap.set('n', '<leader>tb', function()
   vim.cmd('startinsert')
 end, { noremap = true, silent = true, desc = "Run Backend"})
 
+vim.keymap.set('n', '<leader>tB', function()
+  vim.cmd('5split | :CompileBackend')
+  vim.cmd('startinsert')
+end, { noremap = true, silent = true, desc = "Compile Backend"})
+
 -- Show main dashboard
 local function showDashboard()
   local Snacks = require("snacks")
   Snacks.dashboard.open()
 end
 vim.keymap.set("n", "<leader>um", showDashboard, { desc = "Main dashboard/screen" })
+
+
+-- in your keymaps.lua or inside the config function of LazyVim
+vim.keymap.set("n", "<leader>cll", function()
+  -- stop all LSP clients
+  for _, client in pairs(vim.lsp.get_active_clients()) do
+    vim.lsp.stop_client(client.id, true)
+  end
+  -- reload all open buffers
+  vim.cmd("bufdo e")
+  -- show a notification
+  vim.notify("LSP restarted & buffers reloaded", vim.log.levels.INFO)
+end, { desc = "Reload buffers and restart LSP" })
+
+
+-- in your keymaps.lua or inside the config function of LazyVim
+vim.keymap.set("n", "<leader>clL", function()
+  -- stop all LSP clients
+  for _, client in pairs(vim.lsp.get_active_clients()) do
+    vim.lsp.stop_client(client.id, true)
+  end
+end, { desc = "Stop LSP" })
+
+vim.keymap.set("n", "<leader>p#", function()
+  require("utils.csproj").add_prev_buffer_to_csproj()
+end, { desc = "Add previous buffer .cs file to .csproj" })
+
+function M.setup_lsp_keymaps(bufnr)
+
+    --require("lazy").load({ plugins = { "telescope" }})
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+
+    -- Common LSP keymaps
+
+    vim.keymap.set("n", "<leader>cL", function() Snacks.picker.lsp_config() end,
+                   vim.tbl_extend("force", opts, { desc = "LSP Info" }))
+
+    vim.keymap.set("n", "<leader>cD", vim.lsp.buf.definition, -- cld
+                   vim.tbl_extend("force", opts, { desc = "Definitions" }))
+    vim.keymap.set("n", "<leader>cR", "<cmd>Trouble lsp_references<CR>", --clr
+                   vim.tbl_extend("force", opts, { desc = "References (Trouble)" }))
+    -- vim.keymap.set("n", "<leader>cT", "<cmd>Telescope lsp_references<CR>", --clR
+    --                vim.tbl_extend("force", opts, { desc = "References (project-wide)" }))
+    vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover,
+                   vim.tbl_extend("force", opts, { desc = "Hover" }))
+    vim.keymap.set("n", "<leader>cI", "<cmd>Trouble lsp_implementations<CR>", --cli
+                   vim.tbl_extend("force", opts, { desc = "Implementations (Trouble)" }))
+    vim.keymap.set("n", "<leader>cT", "<cmd>Trouble lsp_type_definitions<CR>", --clt
+                   vim.tbl_extend("force", opts, { desc = "Type Definitions (Trouble)" }))
+end
+
+return M

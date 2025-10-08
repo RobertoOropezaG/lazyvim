@@ -9,6 +9,13 @@ vim.opt.listchars:append({ trail = "･" })
 vim.g.indent_blankline_enabled = false
 vim.opt.title = true
 vim.opt.titlestring = "nvim - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+
+vim.opt.colorcolumn = "120"
+
+--Allow .nvim.lua and .exrc files in the current directory to be loaded
+vim.o.exrc = true
+vim.o.secure = true
+
 local gui_configs = {
   neovide = function()
     vim.opt.titlestring = "neovide - " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")

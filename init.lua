@@ -1,5 +1,5 @@
---vim.env.CC = "C:\\ProgramData\\chocolatey\\bin\\zig.exe c"
---vim.env.CXX = "C:\\ProgramData\\chocolatey\\bin\\zig.exe c++"
+-- R vim.env.CC = "C:\\ProgramData\\chocolatey\\bin\\zig.exe c"
+-- R vim.env.CXX = "C:\\ProgramData\\chocolatey\\bin\\zig.exe c++"
 
 
 
