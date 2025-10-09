@@ -14,6 +14,10 @@ highlight link httpHeader Identifier
 syntax match httpUrl "http[s]*:\/\/[^\s]\+"
 highlight link httpUrl String
 
+" HTTP Methods followed by a backslash path (no http/https)
+syntax match httpUrl "^\s*\(GET\|POST\|PUT\|DELETE\|PATCH\|OPTIONS\|HEAD\)\s\/.*$"
+highlight link httpUrl String
+
 " Status lines (optional)
 syntax match httpStatus "\vHTTP\/\d\.\d\s\d{3}"
 highlight link httpStatus Number
@@ -30,3 +34,6 @@ highlight link httpAnnotation PreProc
 syntax match httpJsonKey "\"\zs\w\+\ze\"(?=:)"
 highlight link httpJsonKey Identifier
 
+" Comments starting with exactly ### and a space
+syntax match httpComment "^### .*$"
+highlight link httpComment Comment
