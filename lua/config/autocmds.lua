@@ -43,6 +43,29 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.opt_local.foldmethod = "indent"
+    vim.opt_local.foldlevel = 99
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text" },
+  callback = function()
+    -- Disable nvim-cmp
+    local ok, blink = pcall(require, "blink.cmp")
+    if ok then
+      blink.disable()
+    end
+
+    -- Disable copilot.lua
+    -- vim.b.copilot_enabled = false
+    -- If using copilot.vim, uncomment:
+    -- vim.cmd("Copilot disable")
+  end,
+})
 -- vim.filetype.add {
 --   extension = {
 --     http = "http",

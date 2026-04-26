@@ -50,18 +50,18 @@ return {
     }
 
 -- Wait 2 seconds before requiring Tree-sitter configs
-    vim.defer_fn(function()
-      local ok, tsconfigs = pcall(require, "nvim-treesitter.configs")
-      if not ok then
-        vim.notify(
-          "[nvim-treesitter] failed to load configs module. Make sure the plugin is installed and parsers are built.",
-          vim.log.levels.ERROR
-        )
-        return
-      end
-
-      tsconfigs.setup(opts)
-    end, 5000)  -- 2000 ms = 2 seconds delay
+    -- vim.defer_fn(function()
+    --   local ok, tsconfigs = pcall(require, "nvim-treesitter.configs")
+    --   if not ok then
+    --     vim.notify(
+    --       "[nvim-treesitter] failed to load configs module. Make sure the plugin is installed and parsers are built.",
+    --       vim.log.levels.ERROR
+    --     )
+    --     return
+    --   end
+    --
+    --   tsconfigs.setup(opts)
+    -- end, 5000)  -- 2000 ms = 2 seconds delay
 
     -- require("nvim-treesitter.configs").setup(opts)
     -- Force Zig compilers

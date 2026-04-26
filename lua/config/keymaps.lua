@@ -5,6 +5,8 @@
 local M = {}
 
 
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
 -- Toggle fullscreen in Neovide
 vim.keymap.set("n", "<F11>", function()
   vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen

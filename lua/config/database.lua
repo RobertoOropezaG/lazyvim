@@ -1,4 +1,4 @@
 
 vim.g.db_ui_executable_mappings = {
-  mysql = "c:\\Program Files\\MySQL\\MySQL Server 5.7\\bin\\mysql.exe"
+  mysql = "C:\\mysql-8.4.6\\bin\\mysql.exe"
 }
