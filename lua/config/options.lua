@@ -4,7 +4,10 @@
 
 local gui_configs = {
   neovide = function()
-    vim.opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " - neovide"
+    vim.opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t")
+      .. "/"
+      .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      .. " - neovide"
     vim.g.neovide_scale_factor = 0.80
     -- vim.opt.guifont = "0xProto Nerd Font Mono:h11"
     vim.g.neovide_cursor_animation_length = 0.07
@@ -65,7 +68,9 @@ vim.api.nvim_create_autocmd("UIEnter", {
   end,
 })
 
-local project_config = vim.fn.findfile('.nvim.lua', '.;')
-if project_config ~= '' then
-  vim.cmd('source ' .. project_config)
+local project_config = vim.fn.findfile(".nvim.lua", ".;")
+if project_config ~= "" then
+  vim.cmd("source " .. project_config)
 end
+
+vim.g.autoformat = false
