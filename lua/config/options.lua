@@ -19,10 +19,11 @@ vim.opt.guicursor:append("a:blinkon500-blinkoff500")
 vim.o.exrc = true
 vim.o.secure = true
 
-vim.o.background = "dark"
+-- vim.o.background = "dark"
 
 local gui_configs = {
   neovide = function()
+    vim.cmd.colorscheme("material"); --terafox, thorn, thorn-forest
     vim.opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " - neovide"
     vim.opt.cmdheight = 0
     vim.g.neovide_padding_top = 5
