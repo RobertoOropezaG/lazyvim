@@ -1,8 +1,19 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
+local M = {}
+M.neovide_fonts = { { name = "0xProto Nerd Font Mono", size = 14, width = "w0" },
+  { name = "GoogleSansCode Nerd Font Mono", size = 14, width = "w0" },
+  { name = "DepartureMono Nerd Font Mono", size = 14, width = "w0" }, --14
+  { name = "Terminess Nerd Font Mono", size = 16, width = "w0" }, --16
+  { name = "UbuntuMono Nerd Font Mono", size = 17, width = "w0" },
+  { name = "CaskaydiaCove Nerd Font Mono", size = 15, width = "w0" },
+}
 
-vim.opt.guifont = "0xProto Nerd Font Mono:h14:w0"
+-- -- vim.opt.guifont = "BigBlueTerm437 Nerd Font Mono:h14:w0"
+-- -- vim.opt.guifont = "BigBlueTermPlus Nerd Font Mono:h14:w0"
+vim.opt.guifont = "CaskaydiaCove Nerd Font Mono:h15:w0"
+
 -- vim.o.guifont = "PxPlus IBM VGA8:h16"
 -- vim.opt.guifont = "Perfect DOS VGA 437 Win"
 vim.g.autoformat = false
@@ -19,20 +30,18 @@ vim.opt.guicursor:append("a:blinkon500-blinkoff500")
 vim.o.exrc = true
 vim.o.secure = true
 
--- vim.o.background = "dark"
-
 local gui_configs = {
   neovide = function()
-    -- vim.cmd.colorscheme("material"); --terafox, thorn, thorn-forest, material, modern-borland
-    vim.opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " - neovide"
+    -- vim.opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " - neovide"
+    vim.opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":h:t") .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
     vim.opt.cmdheight = 0
     vim.g.neovide_padding_top = 5
     vim.g.neovide_scale_factor = 0.75
     -- vim.opt.guifont = "0xProto Nerd Font Mono:h11"
-    vim.g.neovide_cursor_animation_length = 0.07
-    vim.g.neovide_cursor_trail_length = 0.3
+    vim.g.neovide_cursor_animation_length = 0.10 -- 0.07
+    vim.g.neovide_cursor_trail_length = 0.8
     -- otros: "railgun", "torpedo", "pixiedust", "sonicboom", "ripple", "wireframe"   -- vim.g.neovide_cursor_vfx_mode = {"torpedo", "wireframe"}
-    -- vim.g.neovide_cursor_vfx_mode = {"torpedo", "wireframe"}
+    -- vim.g.neovide_cursor_vfx_mode = { "ripple"}
     vim.g.neovide_cursor_vfx_opacity = 100.0
     vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
     vim.g.neovide_cursor_vfx_particle_density = 15.0
@@ -89,5 +98,8 @@ vim.api.nvim_create_autocmd("UIEnter", {
 
 local project_config = vim.fn.findfile('.nvim.lua', '.;')
 if project_config ~= '' then
-  -- vim.cmd('source ' .. project_config)
+  vim.cmd('source ' .. project_config)
 end
+
+
+return M
