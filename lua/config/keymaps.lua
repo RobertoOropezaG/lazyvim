@@ -4,12 +4,70 @@
 
 local options = require("config.options")
 
+
+-- Exit terminal mode
+vim.keymap.set("t", "<C-Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- Open terminal
+vim.keymap.set("n", "<leader>fw", function()
+  vim.cmd("terminal")
+  vim.cmd("startinsert")
+end, { desc = "Terminal" })
+
+vim.keymap.set("n", "<leader>fW", function()
+  vim.cmd("vsplit")
+  vim.cmd("terminal")
+  vim.cmd("startinsert")
+end, { desc = "Terminal (vertical split)" })
+
+
 -- Toggle highlight of the current line
 -- Cursor line
 Snacks.toggle.option("cursorline", {
   name = "Cursor Line",
 }):map("<leader>uH")
 
+--- Glance
+vim.keymap.set('n', 'gM', '<CMD>Glance implementations<CR>')
+vim.keymap.set("n", "gm", "<Nop>", { desc = "Glance" })
+vim.keymap.set('n', 'gmI', '<CMD>Glance implementations<CR>')
+vim.keymap.set('n', 'gmd', '<CMD>Glance definitions<CR>')
+vim.keymap.set('n', 'gmr', '<CMD>Glance references<CR>')
+vim.keymap.set('n', 'gmt', '<CMD>Glance type_definitions<CR>')
+vim.keymap.set('n', 'gms', '<CMD>Glance resume<CR>', { desc = 'Glance resume session' })
+
+--- Yank file name and path
+vim.keymap.set("n", "<leader>by", "<Nop>", {
+  desc = "Yank file path or name"
+})
+
+vim.keymap.set("n", "<leader>byf", function()
+  vim.fn.setreg("+", vim.fn.expand("%:t"))
+end, { desc = "Yank filename" })
+
+vim.keymap.set("n", "<leader>byr", function()
+  local cwd = vim.fn.getcwd()
+  local file = vim.fn.expand("%:p")
+  vim.fn.setreg("+", vim.fs.relpath(cwd, file))
+end, { desc = "Yank relative path" })
+
+vim.keymap.set("n", "<leader>byp", function()
+  vim.fn.setreg("+", vim.fn.expand("%"))
+end, { desc = "Yank absolute path" })
+
+vim.keymap.set("n", "<leader>byl", function()
+  local cwd = vim.fn.getcwd()
+  local file = vim.fn.expand("%:p")
+  local line = vim.fn.line(".")
+  vim.fn.setreg("+", vim.fs.relpath(cwd, file) .. ":" .. line)
+end, { desc = "Yank relative path + line" })
+
+vim.keymap.set("n", "<leader>byn", function()
+  vim.fn.setreg("+", vim.fn.expand("%:t:r"))
+end, { desc = "Yank name without extension" })
+
+
+-- FONTS AND TEXT SIZES
 local neovide_fonts = options.neovide_fonts
 local initial_guifont = vim.opt.guifont:get()[1]
 
