@@ -2,17 +2,23 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 local M = {}
-M.neovide_fonts = { { name = "0xProto Nerd Font Mono", size = 14, width = "w0" },
-  { name = "GoogleSansCode Nerd Font Mono", size = 14, width = "w0" },
+M.neovide_fonts = {
+  { name = "0xProto Nerd Font Mono", size = 14, width = "w0" },
+  { name = "GoogleSansCode Nerd Font Mono", size = 15, width = "w0" },
   { name = "DepartureMono Nerd Font Mono", size = 14, width = "w0" }, --14
   { name = "Terminess Nerd Font Mono", size = 16, width = "w0" }, --16
   { name = "UbuntuMono Nerd Font Mono", size = 17, width = "w0" },
   { name = "CaskaydiaCove Nerd Font Mono", size = 15, width = "w0" },
+  { name = "M+CodeLat60 Nerd Font Mono", size = 15, width = "w0" },
+  { name = "FiraMono Nerd Font Mono Medium", size = 15, width = "w0" },
+  { name = "Hack Nerd Font Mono", size = 15, width = "w0" },
+  { name = "JetBrainsMonoNL NFM", size = 15, width = "w0" },
+  -- { name = "3270 Nerd Font Mono", size = 19, width = "w0" }
 }
 
 -- -- vim.opt.guifont = "BigBlueTerm437 Nerd Font Mono:h14:w0"
 -- -- vim.opt.guifont = "BigBlueTermPlus Nerd Font Mono:h14:w0"
-vim.opt.guifont = "CaskaydiaCove Nerd Font Mono:h15:w0"
+vim.opt.guifont = "GoogleSansCode Nerd Font Mono:h15"
 
 -- vim.o.guifont = "PxPlus IBM VGA8:h16"
 -- vim.opt.guifont = "Perfect DOS VGA 437 Win"
@@ -59,7 +65,7 @@ local gui_configs = {
     -- vim.g.neovide_scroll_animation_length = 0
     -- vim.g.neovide_position_animation_length = 0
     --
-    -- -- vim.opt.linespace = -2
+    -- vim.opt.linespace = -2
     --
     -- vim.opt.guicursor = {
     --   -- "n-v-c:block",

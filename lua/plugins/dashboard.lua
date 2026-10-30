@@ -26,7 +26,25 @@ return {
       -- ╚═╝  ╚═══╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═╝
       --
       -- ]]
-      .. [[
+-- .. [[
+-- LLLLLLLLLLL                            AAA               ZZZZZZZZZZZZZZZZZZZYYYYYYY       YYYYYYYVVVVVVVV           VVVVVVVVIIIIIIIIIIMMMMMMMM               MMMMMMMM
+-- LLLLLLLLLLL                           AAAAA              ZZZZZZZZZZZZZZZZZZZYYYYYYY       YYYYYYYVVVVVVVV           VVVVVVVVIIIIIIIIIIMMMMMMMMM             MMMMMMMMM
+-- LLLLLLLLLLL                          AAAAAAA             ZZZZZZZZZZZZZZZZZZZYYYYYYY       YYYYYYYVVVVVVVV           VVVVVVVVIIIIIIIIIIMMMMMMMMMM           MMMMMMMMMM
+-- LLLLLLLLLLL                         AAAAAAAAA            ZZZZZZZZZZZZZZZZZZ YYYYYYYY     YYYYYYYYVVVVVVVV           VVVVVVVVIIIIIIIIIIMMMMMMMMMMM         MMMMMMMMMMM
+--   LLLLLLL                          AAAAAAAAAAA           ZZZZZ     ZZZZZZZ  YYYYYYYYY   YYYYYYYYY VVVVVVV           VVVVVVV   IIIIII  MMMMMMMMMMMM       MMMMMMMMMMMM
+--   LLLLLLL                         AAAAAAAAAAAAA                  ZZZZZZZ       YYYYYYY YYYYYYY     VVVVVVV         VVVVVVV    IIIIII  MMMMMMMMMMMMM     MMMMMMMMMMMMM
+--   LLLLLLL                        AAAAAAA AAAAAAA                ZZZZZZZ         YYYYYYYYYYYYY       VVVVVVV       VVVVVVV     IIIIII  MMMMMMMMMMMMMM   MMMMMMMMMMMMMM
+--   LLLLLLL                       AAAAAAA   AAAAAAA              ZZZZZZZ           YYYYYYYYYYY         VVVVVVV     VVVVVVV      IIIIII  MMMMMMMM MMMMMM MMMMMM MMMMMMMM
+--   LLLLLLL                      AAAAAAA     AAAAAAA            ZZZZZZZ             YYYYYYYYY           VVVVVVV   VVVVVVV       IIIIII  MMMMMMMM  MMMMMMMMMMM  MMMMMMMM
+--   LLLLLLL                     AAAAAAAAAAAAAAAAAAAAA          ZZZZZZZ               YYYYYYY             VVVVVVV VVVVVVV        IIIIII  MMMMMMMM   MMMMMMMMM   MMMMMMMM
+--   LLLLLLL                    AAAAAAAAAAAAAAAAAAAAAAA        ZZZZZZZ                YYYYYYY              VVVVVVVVVVVVV         IIIIII  MMMMMMMM    MMMMMMM    MMMMMMMM
+--   LLLLLLL         LLLLLL    AAAAAAAAAAAAAAAAAAAAAAAAA    ZZZZZZZZZ     ZZZZZ       YYYYYYY               VVVVVVVVVVV          IIIIII  MMMMMMMM     MMMMM     MMMMMMMM
+-- LLLLLLLLLLLLLLLLLLLLLLLL   AAAAAAA             AAAAAAA   ZZZZZZZZZZZZZZZZZZZ       YYYYYYY                VVVVVVVVV         IIIIIIIIIIMMMMMMMM               MMMMMMMM
+-- LLLLLLLLLLLLLLLLLLLLLLLL  AAAAAAA               AAAAAAA  ZZZZZZZZZZZZZZZZZZZ    YYYYYYYYYYYYY              VVVVVVV          IIIIIIIIIIMMMMMMMM               MMMMMMMM
+-- LLLLLLLLLLLLLLLLLLLLLLLL AAAAAAA                 AAAAAAA ZZZZZZZZZZZZZZZZZZZ    YYYYYYYYYYYYY               VVVVV           IIIIIIIIIIMMMMMMMM               MMMMMMMM
+-- LLLLLLLLLLLLLLLLLLLLLLLLAAAAAAA                   AAAAAAAZZZZZZZZZZZZZZZZZZZ    YYYYYYYYYYYYY                VVV            IIIIIIIIIIMMMMMMMM               MMMMMMMM
+-- ]]
+.. [[
 LLLLLLLLLLL                            AAA               ZZZZZZZZZZZZZZZZZZZYYYYYYY       YYYYYYYVVVVVVVV           VVVVVVVVIIIIIIIIIIMMMMMMMM               MMMMMMMM
 L:::::::::L                           A:::A              Z:::::::::::::::::ZY:::::Y       Y:::::YV::::::V           V::::::VI::::::::IM:::::::M             M:::::::M
 L:::::::::L                          A:::::A             Z:::::::::::::::::ZY:::::Y       Y:::::YV::::::V           V::::::VI::::::::IM::::::::M           M::::::::M
@@ -63,6 +81,7 @@ LLLLLLLLLLLLLLLLLLLLLLLLAAAAAAA                   AAAAAAAZZZZZZZZZZZZZZZZZZZ    
     --  ███████████ █████   █████ ███████████    █████       ░░███      █████ █████     █████
     -- ░░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░░░░░░░    ░░░░░         ░░░      ░░░░░ ░░░░░     ░░░░░
     -- ]]
+
     return opts
   end,
 }
